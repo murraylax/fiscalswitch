@@ -1,0 +1,565 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{calc}
+\usepackage{setspace}
+\usepackage{multicol}
+\usepackage{fancyheadings}
+\usepackage{grffile}
+\usepackage[round]{natbib}
+\usepackage{subcaption}
+
+\usepackage{siunitx}
+\sisetup{input-symbols=(), group-digits  = false}
+ 
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{rotating}
+\usepackage{verbatim}
+\usepackage{array}
+\usepackage{multirow}
+
+\setlength{\voffset}{-0.25in}
+\setlength{\topmargin}{0pt}
+\setlength{\hoffset}{0pt}
+\setlength{\oddsidemargin}{0pt}
+\setlength{\headheight}{0pt}
+\setlength{\headsep}{.4in}
+\setlength{\marginparsep}{0pt}
+\setlength{\marginparwidth}{0pt}
+\setlength{\marginparpush}{0pt}
+\setlength{\footskip}{.1in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.25in}
+\setlength{\parskip}{0pc}
+
+\renewcommand{\baselinestretch}{1.6}
+
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\be}{\begin{enumerate}}
+\newcommand{\ee}{\end{enumerate}}
+\newcommand{\bd}{\begin{description}}
+\newcommand{\ed}{\end{description}}
+\newcommand{\prbf}[1]{\textbf{#1}}
+\newcommand{\prit}[1]{\textit{#1}}
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\bdm}{\begin{displaymath}}
+\newcommand{\edm}{\end{displaymath}}
+\newcommand{\script}[1]{\begin{cal}#1\end{cal}}
+\newcommand{\citee}[1]{\citet{#1}}
+\newcommand{\h}[1]{\hat{#1}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\normal}{\mathcal{N}}
+\newcommand{\app}
+{
+\appendix
+}
+
+\newcommand{\appsection}[1]
+{
+\section{#1}
+\renewcommand{\theequation}{\thesection\arabic{equation}}
+\setcounter{equation}{0}
+}
+
+
+\pagestyle{fancyplain}
+\lhead{}
+\chead{Regime Switching in Fiscal Debt Targets and Debt Service Composition}
+\rhead{\thepage}
+\lfoot{}
+\cfoot{}
+\rfoot{}
+
+\begin{document}
+
+\begin{titlepage}
+\begin{singlespace}
+\title{Regime switching in Fiscal Debt Targets and Policy Functions in the United States}
+\date{\today}
+\author{
+James Murray\footnote{\textit{Mailing address}: 1725 State St., La Crosse, WI  54601. \textit{Phone}: (608)406-4068.\newline  \textit{E-mail}: jmurray@uwlax.edu.}\\Department of Economics\\University of Wisconsin - La Crosse
+}
+
+\maketitle
+
+\thispagestyle{empty}
+
+\abstract{Forward-looking macroeconomic theory suggests the impact fiscal policy has on the macroeconomy depends on expectations for future fiscal policy behavior. The effects of fiscal policy therefore depend on long-run government debt targets, the degree to which various fiscal policy variables will respond to debt in order to balance the long-run government budget constraint, and the degree to which fiscal policy variables react to stabilize economic conditions.  In this paper, I examine evidence for switching in fiscal policy behavior in the United States along these dimensions.  I estimate fiscal policy behavior equations for government expenditures, taxes, transfers, and deficits, allowing each to have stabilizing responses to economic conditions and debt-servicing responses to lagged government debt.  I incorporate a rich Markov-regime switching process allowing switching along three dimensions: (1) the long-run government debt target, (2) the stabilizing and debt-servicing response coefficients, and (3) fiscal policy volatility. With two possible regimes for each dimension, I allow for eight possible combinations for fiscal policy regimes.  Smoothed estimates for the fiscal regimes for the United States over post-war period reveal switching in all three dimensions.}\\
+
+\noindent \textit{Keywords}: Fiscal policy, stabilization, government debt, regime switching. \\
+\noindent \textit{JEL classification}: E32, E62.
+\end{singlespace}
+\end{titlepage}
+
+\newpage
+
+\section{Fiscal Policy}\label{s:fiscal}
+
+Below I specify fiscal behavior equations for government expenditures, taxes, net transfers, and deficits.  Each fiscal policy variable has a short-run target that simultaneously depends on the current output gap and lagged government debt as the government balances dual goals to stabilize the economy and balance the long-run government budget constraint.  The actual outcome for each fiscal variable is a convex combination of the short-run target and lagged outcome for the same fiscal variable (to allow for persistence) and is subject to a stochastic shock.
+
+I consider the possibility that fiscal policy switches between multiple regimes.  A change in regime may imply a change in the long-run target for government debt to GDP, a change in how responsive various fiscal policy variables are to the output gap or government debt, a change in fiscal volatility, or some combination of all of these.  In this section I describe the regime-dependent structure of the behavior for the fiscal variables and in the next section I describe the nature of the fiscal regimes and the switching behavior.
+
+\subsection{Fiscal Policy Components}
+
+\textbf{Government Expenditures}
+
+\noindent Consider fiscal policy regarding government expenditures.  Let $G_t$ denote nominal government expenditures and $G_t^*$ the short-run target.  Let actual government expenditures gradually move towards its short-run target according to,
+\beq \label{eq:gov} G_t = \rho_g \left( \frac{Y_{t-1}}{Y_{t-2}} \right) G_{t-1} + \left(1-\rho_g\right) G_t^*, \eeq
+where $\rho_g \in (0,1)$ is a measure of persistence for government expenditures and $Y_t$ is nominal GDP at period $t$.  The ratio $(Y_{t-1}/Y_{t-2})$ is the previous period's gross growth rate of nominal GDP.  Allowing this growth rate to enter multiplicatively above allows nominal government expenditures to grow at the rate of nominal GDP.  By imposing that the gross growth rate enters with a lag suggests government expenditures at period $t$ are at least partially determined by plans made before the realization of time $t$ nominal GDP.  Therefore, planned growth in government expenditures depends on previous growth in nominal GDP.
+
+Let $Y_t$ denote nominal GDP at time $t$.  Dividing both sides of equation (\ref{eq:gov}) by $Y_t$ results in the following equation in terms of the government expenditures ratio and nominal GDP growth,
+\beq \label{eq:govrat} g_t = \rho_g \left( \frac{y_{t-1}}{y_t} \right) g_{t-1} + \left(1-\rho_g\right) g_t^*, \eeq
+where $g_t \equiv G_t / Y_t$ is the ratio of government expenditures to GDP, $g_t^*$ is the short-run target for the government expenditures ratio, and $y_t \equiv Y_t / Y_{t-1}$ is the gross growth rate of nominal GDP.
+
+The multiplier $(y_{t-1}/y_t)$ on the lagged government expenditures ratio allows for changes in inflation and the business cycle to automatically influence the \textit{ratio} of government spending to GDP independent of a policy response in target expenditures.  Suppose, for example, there is an increase in real GDP growth, resulting then in an increase in nominal GDP growth.  To the extent that nominal government expenditure plans are pre-determined, the government spending to GDP \textit{ratio} decreases as real GDP increases.  Similarly, suppose there is an increase in inflation resulting in an increase in nominal GDP growth.  Again to the extent nominal government expenditure plans were previously set, the ratio of nominal government expenditures to nominal GDP decreases as price level increases.
+
+The short-run target for the government expenditures ratio responds to the output gap and the government debt to GDP ratio according to,
+\beq \label{eq:govtarget} g_t^* = \bar{g}(s_t) + \psi_g(s_t) x_t + \gamma_g(s_t) \left[ b_{t-1} - \bar{b}(s_t) \right] + u_{g,t}, \eeq
+where $s_t \in \{1,2,..,M\}$ denotes the fiscal regime at time $t$, $M$ is the possible number of fiscal regimes, $\bar{g}(s_t)$ is the long-run target for the government expenditures ratio which may depend on the fiscal regime, $\psi_g(s_t)$ is a measure of how much the government expenditures ratio responds to the output gap in a given regime, $b_{t-1}$ is the government debt to GDP ratio in the previous period, $\bar{b}(s_t)$ is the long-run target for government debt to GDP, which may also depend on the fiscal regime, and $\gamma_g(s_t)$ is a measure of the regime-dependent response of government expenditures to the deviation of government debt from its target.  
+
+Since $\psi_g(s_t)$ represents automatic and discretionary changes to government expenditures for the purpose of stabilizing real GDP, I make the identifying assumption that $\psi_g(s_t) \leq 0$ for all regimes so that the ratio of government expenditures to real GDP decreases as the output gap increases.  I also impose the restriction that $\gamma_g(s_t) \leq 0$ so that government expenditures decreases in response to increasing government debt.
+
+Finally, $u_{g,t}$ is an exogenous innovation to government expenditures which evolves according to the AR(1) process,
+\beq \label{eq:govarshock} u_{g,t} = \alpha_g u_{g,t-1} + e_{g,t} ,\eeq
+where $e_{g,t}$ is a stochastic shock to government expenditures.  
+
+\ \\ \noindent \textbf{Taxes}
+
+\noindent Tax revenue as a ratio of GDP follows a similar process as government expenditures.  The actual tax revenue ratio adjusts gradually to the short-run target according to,
+\beq \label{eq:taxrat} \tau_t = \rho_\tau \left( \frac{y_{t-1}}{y_t} \right) \tau_{t-1} + \left(1-\rho_\tau \right) \tau_t^*, \eeq
+where $\tau_t$ is the actual ratio of tax revenue to GDP, $\tau_t^*$ is the target level, and $\rho_\tau \in (0,1)$ measures persistence in tax policy.
+
+Similar to the government expenditures target above, the target level for the ratio of tax revenue to real GDP is given by,
+\beq \label{eq:taxtarget} \tau_t^* = \bar{\tau}(s_t) + \psi_\tau(s_t) x_t + \gamma_\tau(s_t) \left[ b_{t-1} - \bar{b}(s_t) \right] + u_{\tau,t}, \eeq
+where $\bar{\tau}(s_t)$ is the regime-dependent long-run target for the ratio of tax revenue to GDP, $\psi_\tau(s_t)$ is the regime-dependent response of tax policy to the output gap, and $\gamma_\tau(s_t)$ is the regime-dependent response of tax policy to rising government debt. 
+
+Since $\psi_{\tau}(s_t)$ measures automatic and discretionary responses to taxes in order to achieve output stabilization, I make the identifying sign restriction that $\psi_{\tau}(s_t) \geq 0$ for all regimes, so that taxes as a ratio of real GDP increases as the output gap increases.  This is the expected behavior for the automatic stabilizing behavior of a progressive tax system.  As economic conditions improve with an increasing output gap, larger proportions of the population move into the higher tax-rate brackets, creating more tax revenue as a percentage of real GDP.  I also impose the restriction that $\gamma_\tau(s_t) \geq 0$ for all regimes so that tax revenues increase in response to an increase in government debt.
+
+Finally, $u_{\tau,t}$ is an exogenous shock to tax policy, which evolves according to the autoregressive process,
+\beq \label{eq:taxarshock} u_{\tau,t} = \alpha_\tau u_{\tau,t-1} + e_{\tau,t}, \eeq
+where $e_{\tau,t}$ is a stochastic shock to tax policy.
+
+\ \\ \noindent \textbf{Transfers}
+
+\noindent Net transfers as a ratio of real GDP follows a similar process as the fiscal variables above.  The actual net transfers ratio adjusts gradually to the short-run target according to,
+\beq \label{eq:tranrat} n_t = \rho_n \left( \frac{y_{t-1}}{y_t} \right) n_{t-1} + \left( 1 - \rho_n \right) n_t^*, \eeq
+where $n_t$ denotes the actual transfers to GDP ratio, $n_t^*$ denotes its short-run target, and $\rho_n \in (0,1)$ is a measure of persistence in net transfer payouts.  Target policy for transfers evolves according to,
+\beq \label{eq:trantarget} n_t^* = \bar{n}(s_t) + \psi_n(s_t) x_t + \gamma_n(s_t) \left[ b_{t-1} - \bar{b}(s_t) \right] + u_{n,t}, \eeq
+where $\bar{n}(s_t)$ is the regime-dependent long-run target, $\psi_n(s_t)$ captures the regime-dependent response of transfers policy to the output gap, and $\gamma_n(s_t)$ captures the degree to which transfers adjust to balance the long-run budget constraint in a given fiscal regime. 
+
+Transfer payments include counter-cyclical automatic expenditures, so I restrict $\psi_n(s_t) \leq 0$.  When the output gap increases, income increases and unemployment decreases, and transfer payments made to assist low income people decrease.  The regime-dependent parameter $\psi_n(s_t)$ may also involve discretionary policy changes in the same counter-cyclical fashion, for example, when the federal government extends unemployment insurance benefits during recession.  I also restrict $\gamma_n(s_t) \leq 0$ for all regimes so that transfer payments decrease in response to increases in government debt.
+
+Finally, $u_{n,t}$ denotes an exogenous innovation to transfers policy, which evolves according to the autoregressive process,
+\beq \label{eq:tranarshock} u_{n,t} = \alpha_n u_{n,t-1} + e_{n,t}, \eeq
+where $e_{n,t}$ is a stochastic shock to fiscal policy concerning net transfer payments.
+
+\ \\ \noindent \textbf{Deficits}
+
+\noindent The above fiscal variables capture much, but not all, of the government budget constraint.  I do not attempt to model the other aspects of the government budget constraint to derive the government budget deficit.  Rather, I consider a fiscal policy behavioral equation for the government budget deficit as a whole, similar to the fiscal variables above and to existing literature.
+
+The government budget deficit as a ratio of GDP adjusts gradually to its short-run target, according to,
+\beq \label{eq:deficitrat} d_t = \rho_d \left( \frac{y_{t-1}}{y_t} \right) d_{t-1} + (1-\rho_d) d_t^*, \eeq
+where $d_t$ denotes the actual primary (net of interest payments) government budget deficit to GDP ratio, $d_t^*$ denotes the short-run target, and $\rho_d\in(0,1)$ is a measure of persistence in government budget deficits.  The target for government budget deficits evolves according to,
+\beq \label{eq:deficittarget} d_t^* = \bar{d}(s_t) + \psi_d(s_t) x_t + \gamma_d(s_t) \left[ b_{t-1} - \bar{b}(s_t) \right] + u_{d,t}, \eeq
+where $\bar{d}(s_t)$ is the regime-dependent long-run target for the ratio of the government budget deficit to GDP and is a function of $\bar{b}(s_t)$ which is derived in the next subsection.  The regime-dependent parameter $\psi_d(s_t)$ is the response of the government budget deficit to the output gap, and $\gamma_d(s_t)$ is the response of the government budget deficit to the level of government debt to GDP.  
+
+Automatic and discretionary fiscal stabilizers of the business cycle imply the sign restriction $\psi_d(s_t) \leq 0$ for all regimes.  To balance the long-run government budget deficit, government budget deficits should decrease in response to growing government debt, so I also restrict $\gamma_d(s_t) \leq 0$ for all regimes.
+
+The innovation to government budget deficits, $u_{d,t}$ evolves according to the autoregressive process,
+\beq \label{eq:deficitarshock} u_{d,t} = \alpha_n u_{d,t-1} + e_{d,t}, \eeq
+
+\ \\ \noindent \textbf{Variances}
+
+\noindent There are four stochastic shocks in the fiscal policy behavior equations above: shock to government expenditures ($e_{g,t}$), tax revenue ($e_{\tau,t}$), net transfers ($e_{n,t}$), and deficits ($e_{d,t}$).  The variances for these may switch between fiscal regimes.  The regime-dependent variances are given by, $\sigma_g^2(s_t)$, $\sigma_\tau^2(s_t)$, $\sigma_n^2(s_t)$, and $\sigma_d^2(s_t)$.  Decisions for these fiscal policy components are not made independently of one another, so I also estimate all six covariances.  It is common for congressional or state bills that alter fiscal policy affect multiple fiscal variables at once.  For simplicity, I assume the \textit{correlations} between fiscal policy components do not switch between the regimes.  The correlations to be estimated are given by, $\varrho_{g,\tau}$, $\varrho_{g,n}$, $\varrho_{g,d}$, $\varrho_{\tau,n}$, $\varrho_{\tau,d}$, and $\varrho_{n,d}$.  From given regime-fixed correlations and regime-dependent variances, the regime-dependent covariances are given by, $\sigma_{i,j}(s_t) = \varrho_{i,j} \sigma_i(s_t) \sigma_j(s_t)$, for all $\{i,j\} \in \{g, \tau, n, d\}$.
+
+\subsection{Government Budget Constraint}
+
+The intertemporal government budget constraint, in nominal terms, is given by,
+\beq \label{eq:govnom} B_t = (1 + r_{t-1}) B_{t-1} + D_t - \left( M_t - M_{t-1} \right), \eeq
+where $B_t$ is the nominal value of government debt at time $t$, $r_{t-1}$ is the nominal interest rate for debt issued at period $t-1$, $D_t$ is the nominal value of the primary government budget deficit (net of interest payments), and $M_t$ is the nominal money supply at period $t$. A change in money supply, $(M_t-M_{t-1})$, is seigniorage revenue which decreases nominal government debt.  
+
+Divide both sides of equation (\ref{eq:govnom}) by $Y_t$, and allow for the possibility for measurement error, and the intertemporal government budget constraint becomes,
+\beq \label{eq:govrat} b_t = (1+r_{t-1}) \left(\frac{1}{y_t}\right) b_{t-1} + d_t - m_t + \left(\frac{1}{y_t}\right) m_{t-1} + v_t \eeq
+where $v_t$ is the measurement error for government debt.
+
+I do not attempt to model money supply behavior in this paper.  Let $u_{b,t} = - m_t + \left(\frac{1}{y_t}\right) m_{t-1} + v_t$ denote an aggregate stochastic term to observed government debt, so that equation (\ref{eq:govrat}) simplifies to,
+\beq \label{eq:govbudget} b_t = (1+r_{t-1}) \left(\frac{1}{y_t}\right) b_{t-1} + d_t + u_{b,t}. \eeq
+Let the stochastic innovation $u_{b,t}$ evolve according the autoregressive process,
+\beq \label{eq:debtshock} u_{b,t} = (1-\alpha_b) \bar{u}_b + \alpha_b u_{b,t-1} + e_{b,t} \eeq
+where $\bar{u}_b$ is the possibly non-zero steady state value for $\left( - m_t + \left(\frac{1}{y_t}\right) m_{t-1} + v_t \right)$ and $e_{b,t}$ is an independently and identically distributed shock with variance $\sigma_b^2$.
+
+The intertemporal government budget constraint can demonstrate the relationship between fiscal-regime dependent long-run targets $\bar{b}(s_t)$ and $\bar{d}(s_t)$.  Evaluating equation (\ref{eq:govbudget}) at the steady state and a constant fiscal regime $s_{t-1}=s_t=s$ results in,
+\bdm \bar{b}(s) = (1+\bar{r}) \left(\frac{1}{\bar{y}}\right) \bar{b}(s) + \bar{d}(s) + \bar{u}_b, \edm
+where $\bar{y}$ is the steady state growth rate of nominal GDP and $\bar{r}$ is the steady state nominal interest rate.  Solving for $\bar{d}(s)$ reveals,
+\beq \label{eq:bbar} \bar{d}(s) = \left( \frac{\bar{y}-\bar{r}-1}{\bar{y}} \right) \bar{b}(s) - \bar{u}_b \eeq
+
+Equation (\ref{eq:bbar}) reveals the possibility that long-run primary deficits can be negative (i.e. the government runs a long-run primary surplus), even when there is a positive long-run level of government debt.  The values $\bar{d}(s)$ and $\bar{b}(s)$ can have opposite signs when the term $\left(\bar{y}-\bar{r}-1\right)$ is negative.  This happens when the nominal interest rate is greater than the growth rate of nominal GDP.  This is a well known case when growth in nominal GDP is not sufficient to pay for interest accrued on debt, so the government runs surpluses to pay the remaining interest and maintain a positive debt to GDP ratio.
+
+\subsection{Linear Approximations}
+
+The model does not quite fit into a linear state-space representation as there are nonlinear multiplicative terms involving $(1/y_t)$ and $(1+r_{t-1})$ in the fiscal policy equations.  The equations describing graduate adjustment of the government expenditures ratio (\ref{eq:govrat}), tax revenue ratio (\ref{eq:taxrat}), net transfers ratio (\ref{eq:tranrat}), and deficit to GDP ratio (\ref{eq:deficitrat}) can be linearized around the long-run values for nominal GDP growth and the regime-dependent long-run targets for the fiscal variables.  The first-order Taylor series approximations for these four equations are given by, respectively,
+\beq \label{eq:govlin} g_t = \rho_g g_{t-1} - \rho_g \left(\frac{1}{\bar{y}}\right) \bar{g}(s_t) (y_t - y_{t-1}) + (1-\rho_g)g_t^* \eeq
+\beq \label{eq:taxlin} \tau_t = \rho_\tau \tau_{t-1} - \rho_\tau \left(\frac{1}{\bar{y}}\right) \bar{\tau}(s_t) (y_t - y_{t-1}) + (1-\rho_d)\tau_t^* \eeq
+\beq \label{eq:tranlin} n_t = \rho_n  n_{t-1} - \rho_n \left(\frac{1}{\bar{y}}\right) \bar{n}(s_t) (y_t - y_{t-1}) + (1-\rho_n)n_t^* \eeq
+\beq \label{eq:deficitlin} d_t = \rho_d d_{t-1} - \rho_d \left(\frac{1}{\bar{y}}\right) \bar{d}(s_t) (y_t - y_{t-1}) + (1-\rho_d)d_t^* \eeq
+
+The first-order Taylor series approximation for the intertemporal government budget constraint, (\ref{eq:govbudget}), is given by,
+\beq \label{eq:lingovbudget} b_t = (1+\bar{r}) \left( \frac{1}{\bar{y}} \right) b_{t-1} - (1+\bar{r}) \left( \frac{1}{\bar{y}} \right)^2 \bar{b}(s_t) (y_t - \bar{y}) + \left( \frac{1}{\bar{y}} \right) \bar{b}(s_t) (r_t - \bar{r}) + d_t + u_{b,t} \eeq
+
+The short-run fiscal policy targets for the government expenditures ratio (\ref{eq:govtarget}), tax ratio (\ref{eq:taxtarget}), net transfers ratio (\ref{eq:trantarget}), and deficit ratio (\ref{eq:deficittarget}), are already linear given their regime-dependent coefficients.  These four equations together with the five equations above define the first part of a linear system describing how nine fiscal policy variables (four actual fiscal ratio variables, four short-run fiscal targets, and government debt to GDP) depend on each other and macroeconomic variables, nominal GDP growth ($y_t$) and nominal interest rate ($r_t$).
+
+\section{Fiscal Regime Switching}
+
+The model allows for the possibility for regime switching in a number of fiscal policy parameters along three dimensions: (1) switching in the long-run debt/GDP target; (2) switching in the long-run targets for the fiscal components and the fiscal responses to the output gap and the debt/GDP ratio; and (3) switching in the volatility of the fiscal shocks.  I consider the possibility for two regimes in each of the three source for switching, allowing for eight possible regimes for fiscal policy.  This regime switching framework allows us to identify a very rich set of possibilities for fiscal governance, while limiting to a practical level the number of additional parameters to be estimated.
+
+\subsection{Debt-Target Regimes}
+
+Let $s_t^b \in \{L,H\}$ denote relatively ``low'' versus ``high'' debt-target regimes, respectively.  The regime-dependent debt targets are given by,
+\beq \bar{b}(s_t^b) = \left\{ \begin{array}{ll} \bar{b}^L, & \mbox{if }s_t^b = L \\ \bar{b}^H, & \mbox{if }s_t^b = H \end{array} \right\}, \eeq
+where $\bar{b}_L > 0$ is the debt/GDP target in the low-debt regime, $\bar{b}_H > 0$ is the debt/GDP target in the high-debt regime, and $\bar{b}^H > \bar{b}^L$.
+
+I allow fiscal policy to switch exogenously between low-debt and high-debt regimes according to a first order Markov process.  Let $p_L \equiv P(s_t=L | s_{t-1}=L)$ denote the probability that fiscal policy remains in a low-debt regime in period $t$ if it was in a low-debt regime in the previous period.  Similarly, let $p_H \equiv P(s_t=H | s_{t-1}=H)$ denote the probability that fiscal policy remains in a high debt regime in period $t$ given that same regime in the previous period.  The transition matrix lays out the probabilities for either switching or remaining in each debt-target regime conditional on having been in each of the probabilities in the previous period.  It is given by,
+\beq P^b = \left[ \begin{array}{cc} p_L & (1-p_L) \\ (1-p_H) & p_H \end{array} \right]. \eeq
+and the probabilities  $p_L \in (0,1)$ and $p_H \in (0,1)$ are parameters to be estimated in the model.
+
+Let $E(s_t^b) = [ P(s_t^b=L) ~ P(s_t^b=H)]'$ denote the 2x1 vector of probabilities that the debt-target is in each regime.  The expectation evolves according to,
+\bdm E(s_t^b) = P^b E(s_{t-1}^b). \edm
+
+\subsection{Fiscal Components Regimes}
+
+Let $s_t^f \in \{A,B\}$ denote two possible regimes for the behavior of the fiscal policy target variables.  Let $\lambda_t(s_t^f)$ denote vector of fiscal policy response coefficients and the long-run targets of the fiscal components that switch with this source of regime switching.  This vector of regime-dependent parameters is given by,
+\bdm \lambda_t(s_t^f) = [\psi_g(s_t^f)~ \gamma_g(s_t^f)~ \bar{g}(s_t^f)~ \psi_\tau(s_t^f)~ \gamma_\tau(s_t^f)~ \bar{\tau}(s_t^f)~ \psi_n(s_t^f)~ \gamma_n(s_t^f)~ \bar{n}(s_t^f) ~ \psi_d(s_t^f)~ \gamma_d(s_t^f)]' \edm
+
+The regime-dependent values that the parameters in $\lambda_t(s_t^f)$ can take are given by,
+
+\beq \lambda_t(s_t^f) = \left\{ \begin{array}{ll}
+  \left[ \psi_{g}^{A}~ \gamma_{g}^{A}~ \bar{g}^1~ \psi_{\tau}^{A}~ \gamma_{\tau}^{A}~ \bar{\tau}^1~ \psi_{n}^{A}~ \gamma_{n}^{A}~ \bar{n}^1 ~ \psi_{d}^{A}~ \gamma_{d}^{A} \right]' & \mbox{if }s_t^f = A \\
+  \left[ \psi_{g}^{B}~ \gamma_{g}^{B}~ \bar{g}^2~ \psi_{\tau}^{B}~ \gamma_{\tau}^{B}~ \bar{\tau}^2~ \psi_{n}^{B}~ \gamma_{n}^{B}~ \bar{n}^2 ~ \psi_{d}^{B}~ \gamma_{d}^{B} \right]' & \mbox{if }s_t^f = B 
+\end{array} \right\} \eeq
+
+Switching between regimes $A$ and $B$ also evolves according a first-order Markov process that is independent of other fiscal regime-switching processes.  The possibility for independent regime-switching in the targets for the fiscal components allows for the fiscal authority to change its priorities in terms of government spending, transfers, and taxes, while not necessarily committing to changes in long-run deficits or debt / GDP.  Similarly, the independent switching in the long-run debt target in the previous subsection allows for the fiscal authority to change its decisions on deficits and debts, without necessarily re-arranging their priorities on government spending, transfers, and taxes.  This modeling flexibility for the fiscal decision making process is an innovation that is new to the literature.
+
+Let $p_A = P(s_t^f = A | s_{t-1}^f = A)$ denote the probability that fiscal policy remains in regime 1 given it was in that same regime in the previous period, and let $p_B = P(s_t^f = B | s_{t-1}^f = B)$ denote the probability that fiscal policy remains in regime 2 if in that regime previously.  The transition matrix is given by,
+\beq P^f = \left[ \begin{array}{cc} p_A & (1-p_A) \\ (1-p_B) & p_B \end{array} \right]. \eeq
+and the probabilities  $p_A \in (0,1)$ and $p_B \in (0,1)$ are parameters to be estimated in the model. The expectation vector for being in each regime, $E(s_t^f) = [ P(s_t^f=1) ~ P(s_t^f=2)]'$, evolves according to,
+\bdm E(s_t^f) = P^f E(s_{t-1}^f). \edm
+
+\subsection{Fiscal Volatility Regimes}
+
+Finally, there may be switching in the volatility in fiscal policy outcomes that is independent of changes in long-run targets for debt/GDP or the fiscal components.  Let $s_t^v \in \{S,V\}$ denote two possible regimes for relatively stable versus relatively volatile outcomes for fiscal policy.  Let $\varsigma_f(s_t^v) = [\sigma_g(s_t^v)~ \sigma_\tau(s_t^v)~ \sigma_n(s_t^v)~ \sigma_d(s_t^v)]'$ denote the 4$\times$1 vector of regime-dependent standard deviations for the stochastic terms on the behavioral equations for government spending, taxes, transfers, and deficits.  These standard deviations take on the following values,
+\beq \varsigma_f(s_t^v) = \left\{ \begin{array}{ll} \left[\sigma_{g}^{S}~ \sigma_{\tau}^{S}~ \sigma_{n}^{S}~ \sigma_{d}^{S}\right], & \mbox{if } s_t^v = S \\  \left[\sigma_{g}^{V}~ \sigma_{\tau}^{V}~ \sigma_{n}^{V}~ \sigma_{d}^{V}\right], & \mbox{if } s_t^v = V \end{array} \right\}, \eeq
+where $\sigma_{f}^{S} \leq \sigma_{f}^{V}$ for all $f \in \{g,\tau,n,d\}$; which is to say, the variances for the fiscal shocks in the relatively stable regimes are smaller than the variances in the relatively volatile regime.
+
+Let $p_S = P(s_t^v = S | s_{t-1}^v = S)$ denote the probability that fiscal policy remains in the stable regime given the same regime in the previous period.  Let $p_V = P(s_t^v = V | s_{t-1}^v = V)$ denote the probability that fiscal policy remains in a volatile regime.  The transition matrix for remaining or switching between stable and volatile regimes is given by,
+\beq P^v = \left[ \begin{array}{cc} p_S & (1-p_S) \\ (1-p_V) & p_V \end{array} \right], \eeq
+and the probabilities  $p_S \in (0,1)$ and $p_V \in (0,1)$ are parameters to be estimated in the model. The expectation vector for being in each regime, $E(s_t^v) = [ P(s_t^v=S) ~ P(s_t^v=V)]'$, evolves according to,
+\bdm E(s_t^v) = P^v E(s_{t-1}^v). \edm
+
+\subsection{Combined Fiscal Regimes}
+
+With two possible outcomes for debt-regimes, low versus high; two regimes for fiscal component targets; and two possible outcomes for volatility regimes, leads to the possibility of $2^3=8$ possible combinations for fiscal regimes.  Let the notation described earlier, $s_t \in \{1,..,M\}$, where $M=8$, denote these eight possible fiscal regime combinations.  Let $E(s_t)$ denote the $8\times 1$ vector of the probabilities for these regimes and $P$ denote the combined transition matrix.  These are given by, respectively,
+\beq E(s_t) = E(s_t^b) \otimes E(s_t^f) \otimes E(s_t^v) \eeq
+\beq P= P^b \otimes P^f \otimes P^v, \eeq
+and the probabilities for each regime evolves according to the Markov process,
+\beq E(s_t) = P E(s_{t-1}) \eeq
+
+\section{Output, Inflation, and Interest Rate Dynamics}\label{s:model}
+  
+\subsection{Monetary Policy}
+
+I consider the following \citee{taylor1993} type rule for monetary policy,
+\beq \label{eq:taylor} r_t = (1-\rho_r) \bar{r} + \rho_r r_{t-1} + (1-\rho_r) \left[\phi_x x_t + \phi_\pi \left(\pi_t - \bar{\pi}\right) \right] + u_{r,t}, \eeq
+where $\rho_r$ is a measure of persistence, $\bar{r}$ is the steady state nominal interest rate, $\phi_x \geq 0$ is the response to the target interest rate from an increase in the output gap, $\phi_\pi \geq 0$ is the response of the target interest rate to an increase in inflation rate, $\bar{\pi}$ is the monetary authority's target inflation rate, and $u_{r,t}$ is a stochastic innovation to monetary policy.  Let the stochastic term evolve according to the autoregressive process,
+\beq \label{eq:mpshock} u_{r,t} = \alpha_r u_{r,t-1} + e_{r,t}, \eeq
+where $e_{r,t}$ is an independently and identically distributed stochastic shock with variance $\sigma_r^2$.
+
+\subsection{Output and Inflation Dynamics}
+
+I do not attempt to model optimal economic behavior of consumers and producers, in order keep the focus of this paper on fiscal policy and limit problems that estimates for fiscal policy behavior are affected by restrictive structure and behavioral assumptions that are often imposed in dynamic stochastic general equilibrium models.  Instead, I use the following augmented vector autoregression (VAR) to describe the inter-relationships between nominal GDP growth ($y_t$), the output gap ($x_t$), and inflation ($\pi_t$),
+
+\beq \label{eq:vary} \begin{array}{ll} \ds y_t - \bar{y} & =  \ds \sum_{k=1}^K \theta_{y,y}^k (y_{t-k} - \bar{y}) + \sum_{k=1}^K \theta_{y,x}^k x_{t-k} + \sum_{k=1}^K \theta_{y,\pi}^k (\pi_{t-k} - \bar{\pi}) \\ [1pc]
+  & \ds + \sum_{k=0}^K \eta_{y,g}^k (g_{t-k} - \bar{g}) + \sum_{k=0}^K \eta_{y,\tau}^k (\tau_{t-k} - \bar{\tau}) + \sum_{k=0}^K \eta_{y,n}^k (n_{t-k} - \bar{n}) \\ [1pc]
+  & \ds + \sum_{k=0}^K \lambda_{y}^k (r_{t-k} - \bar{r}) + e_{y,t}. \end{array} \eeq
+
+\beq \label{eq:varx} \begin{array}{ll} \ds x_t  & =  \ds \sum_{k=1}^K \theta_{x,y}^k (y_{t-k} - \bar{y}) + \sum_{k=1}^K \theta_{x,x}^k x_{t-k} + \sum_{k=1}^K \theta_{x,\pi}^k (\pi_{t-k} - \bar{\pi}) \\ [1pc]
+  & \ds + \sum_{k=0}^K \eta_{x,g}^k (g_{t-k} - \bar{g}) + \sum_{k=0}^K \eta_{x,\tau}^k (\tau_{t-k} - \bar{\tau}) + \sum_{k=0}^K \eta_{x,n}^k (n_{t-k} - \bar{n}) \\ [1pc]
+  & \ds + \sum_{k=0}^K \lambda_{x}^k (r_{t-k} - \bar{r}) + e_{x,t}. \end{array} \eeq
+
+
+\beq \label{eq:varpi} \begin{array}{ll} \ds \pi_t - \bar{\pi} & =  \ds \sum_{k=1}^K \theta_{\pi,y}^k (y_{t-k} - \bar{y}) + \sum_{k=1}^K \theta_{\pi,x}^k x_{t-k} + \sum_{k=1}^K \theta_{\pi,\pi}^k (\pi_{t-k} - \bar{\pi}) \\ [1pc]
+  & \ds + \sum_{k=0}^K \eta_{\pi,g}^k (g_{t-k} - \bar{g}) + \sum_{k=0}^K \eta_{\pi,\tau}^k (\tau_{t-k} - \bar{\tau}) + \sum_{k=0}^K \eta_{\pi,n}^k (n_{t-k} - \bar{n}) \\ [1pc]
+  & \ds + \sum_{k=0}^K \lambda_{\pi}^k (r_{t-k} - \bar{r}) + e_{y,t}. \end{array} \eeq
+The number of lags is given by $K$.  The coefficients $\theta_{i,j}^k$, for $k \in \{1,..,K\}$ and macroeconomic variables $i$ and $j$ each in the set $\in \{y, x, \pi\}$, are reduced form autoregressive coefficients that capture the dynamics between nominal output growth, the output gap, and inflation.  In the analysis that follows, I consider the case with a single lag, $K=1$.
+
+Equations (\ref{eq:vary}) through (\ref{eq:varpi}) also show how fiscal and monetary policy influences output and inflation.  The coefficients $\eta_{y,f}^k$, $\eta_{x,f}^k$, and $\eta_{\pi,f}^k$ for $f \in \left\{g,\tau,n\right\}$ and $k \in \{0,..,K\}$ represent the impact the fiscal policy variables have on nominal output growth, the output gap, and inflation, respectively.  When $k=0$, these coefficients represent the contemporaneous effects that the fiscal policy variables have on output and inflation.  The parameters, $\lambda_{y}^k$, $\lambda_{x}^k$, and $\lambda_{\pi}^k$ for $k \in \{0..K\}$ represent the impact monetary policy has on nominal output growth, the output gap, and inflation, respectively. When $k=0$, these coefficients represent the contemporaneous effects of monetary policy.
+
+The parameters $\bar{g}$, $\bar{\tau}$, and $\bar{n}$ represent the average values for the government expenditures ratio, the tax revenue ratio, and the net transfers ratio, respectively, over all possible fiscal regimes.  Let $p_s$ for $s \in \{1,..,M\}$ denote the unconditional probability that fiscal policy is in regime $s$ for any time period.  Let $\bar{f}$ denote average value for any fiscal policy variable $f \in \{g,\tau,n\}$, and let $\bar{f}(s)$ denote the long-run target based on fiscal regime $s \in \{1,..,M\}$.  The average value for any fiscal policy variable is given by,
+\beq \bar{f} = \sum_{s=1}^M p_s \bar{f}(s). \eeq
+where $p_s = P(s_t=s)$ is the probability that fiscal policy is in regime $s$. 
+
+The stochastic shocks to GDP growth, output gap, and inflation are given by $e_{y,t}$, $e_{x,t}$, and $e_{\pi,t}$, respectively.  These are jointly distributed with variances $\sigma_y^2$, $\sigma_x^2$, and $\sigma_\pi^2$, respectively, and covariances $\sigma_{y,x}$, $\sigma_{y,\pi}$, $\sigma_{x,\pi}$.
+
+\section{Estimation}
+
+\subsection{Data}
+The data for nominal variables GDP, government expenditures, tax revenue, net transfers, and the primary government budget deficit comes from the National Income Product Account (NIPA) tables published by the Bureau of Economic Analysis.  The fiscal variables given in nominal terms and expressed as a percentage of nominal GDP.  Nominal GDP is given in NIPA Table 1.1.5, Line 1.  Government expenditures is given in NIPA Table 1.1.5, Line 22.  Tax revenue is given by federal personal current taxes in NIPA Table 3.2, Line 3.  Net transfers are given by federal current transfer payments (NIPA Table 3.2, Line 25) minus federal current transfer receipts (NIPA Table 3.2, Line 18).  The primary federal government budget deficit is equal to the negative of net federal government saving (NIPA Table 3.2, Line 36) minus federal interest payments (NIPA 3.2, Line 32).  Government debt is given by federal debt held by the public, published by the Bureau of Fiscal Service of the U.S. Department of the Treasury and available for download at the St. Louis Federal Reserve Economic Database (FRED) (code: GFDEBTN).
+
+The output gap is given by difference between nominal GDP and nominal potential GDP, as a proportion of nominal potential GDP.  Nominal potential GDP is estimated and published by the Congressional Budget Office and available for download at FRED (code: NGDPPOT).  Inflation is given as the quarterly growth rate of GDP implicit price deflator from NIPA Table 1.1.9, Line 1.  Finally, the nominal interest rate is given by the effective federal funds rate, available at FRED (code: FEDFUNDS).
+
+I consider the sample period 1966:Q1 - 2016:Q1 which corresponds to the largest time frame with complete quarterly observations for all variables, and results in a sample size of 201 observations for nine observable variables.
+
+\subsection{State / Space System}
+
+The model above can be transformed into a linear state-space system with regime switching in the coefficients.  Table \ref{tb:eqs} summarizes 19 linear equations from the model above that determine 19 endogenous variables. Table \ref{tb:vars} summarizes the 19 endogenous variables and nine stochastic shocks in these equations. Let $\xi_t$ denote the $19\times 1$ vector of endogenous variables and $e_t$ denote the $9\times 1$ vector of stochastic shocks.  Assume further that the stochastic shocks are normally distributed.  The equations can be combined into the following matrix form,
+\beq \label{eq:statestruct} F_0 \xi_t = h_1(s_t) + F_1(s_t) \xi_{t-1} + M_1 e_t, ~~e_t \sim \script{N}\left(0, Q(s_t) \right), \eeq
+where $h_1(s_t)$ is a vector of regime-dependent intercept terms which includes the regime-dependent long-run targets for debt to GDP and the fiscal components, $F_1(s_t)$ is a regime-dependent coefficient matrix that captures the regime-dependent fiscal responses to the output gap and debt/GDP ratio, and $Q(s_t)$ is a matrix of regime-dependent variances and covariances.  This matrix includes some regime-dependent variances, some fixed variances, regime-dependent covariances between fiscal policy shocks (though the correlations are assumed constant over regimes), and zero restrictions.  All of these details are discussed above in Sections \ref{s:fiscal} and \ref{s:model} and compactly summarized as follows, 
+\beq Q =
+  \begin{array}{ll}
+    \begin{array}{ccccccccc} ~ ~~~e_{g,t}~~~ & ~~~e_{\tau,t}~~~ & ~~~e_{n,t}~~~ & ~~e_{d,t}~~ & e_{b,t} & e_{r,t} & e_{y,t} & ~e_{x,t} & e_{\pi,t} \end{array} & \\ [0.5pc]
+    \left[
+      \begin{array}{ccccccccc}
+        \sigma_{g}^2(s_t) & \sigma_{g,\tau}(s_t) & \sigma_{g,n}(s_t) & \sigma_{g,d}(s_t) & 0 & 0 & 0 & 0 & 0 \\
+        \sigma_{g,\tau}(s_t) & \sigma_{\tau}^2(s_t) & \sigma_{\tau,n}(s_t) & \sigma_{\tau,d}(s_t) & 0 & 0 & 0 & 0 & 0 \\
+        \sigma_{g,n}(s_t) & \sigma_{\tau,n}(s_t) & \sigma_{n}^2(s_t) & \sigma_{n,d}(s_t) & 0 & 0 & 0 & 0 & 0 \\
+        \sigma_{g,d}(s_t) & \sigma_{\tau,d}(s_t) & \sigma_{n,d}(s_t) & \sigma_{d}^2(s_t) & 0 & 0 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0 & \sigma_b^2 & 0 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0 & 0 & \sigma_r^2 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0 & 0 & 0 & \sigma_y^2 & \sigma_{y,x} & \sigma_{y,\pi} \\
+        0 & 0 & 0 & 0 & 0 & 0 & \sigma_{y,x} & \sigma_x^2 & \sigma_{x,\pi} \\
+        0 & 0 & 0 & 0 & 0 & 0 & \sigma_{y,\pi} & \sigma_{x,\pi} & \sigma_{\pi}^2
+      \end{array}
+    \right]
+
+    & \begin{array}{c} e_{g,t} \\ e_{\tau,t} \\ e_{n,t} \\ e_{d,t} \\ e_{b,t} \\ e_{r,t} \\ e_{y,t} \\ e_{x,t} \\ e_{\pi,t} \end{array}
+  \end{array}
+\eeq
+The matrix $F_0$ is a full rank matrix. Multiplying equation (\ref{eq:statestruct}) through by $F_0^{-1}$ results in the following familiar state equation,
+\beq \label{eq:state} \xi_t  =  h^*(s_t) + F^*(s_t) \xi_{t-1} + M^* e_t, ~~e_t \sim \script{N}\left(0, Q(s_t) \right), \eeq 
+where $h^*(s_t) \equiv F_0^{-1} h_1(s_t)$, $F^*(s_t) \equiv F_0^{-1} F_1(s_t)$, and $M^* \equiv F_0^{-1} M_1$.
+
+\begin{table}\caption{Equations in Combined State Equation}\label{tb:eqs}
+  \begin{center}\begin{tabular}{cl}
+    Equation No. & Description \\ \hline
+    (\ref{eq:govtarget}) & Government expenditures target policy behavior \\
+    (\ref{eq:govarshock}) & Government expenditures policy shock AR(1) process \\
+    (\ref{eq:taxtarget}) & Tax revenue target policy behavior  \\
+    (\ref{eq:taxarshock}) & Tax revenue policy shock AR(1) process \\
+    (\ref{eq:trantarget}) & Net transfers target policy behavior \\
+    (\ref{eq:tranarshock}) & Net transfers policy shock AR(1) process \\
+    (\ref{eq:deficittarget}) & Government budget deficit target policy behavior \\
+    (\ref{eq:deficitarshock}) & Government budget deficit policy shock AR(1) process\\
+    (\ref{eq:debtshock}) & Government budget residual AR(1) process \\
+    (\ref{eq:govlin}) & Linearized evolution of government expenditures toward target \\
+    (\ref{eq:taxlin})  & Linearized evolution of tax revenue toward target \\
+    (\ref{eq:tranlin}) & Linearized evolution of net transfers toward target \\
+    (\ref{eq:deficitlin}) & Linearized evolution of budget deficit toward target \\
+    (\ref{eq:lingovbudget}) & Linearized intertemporal government budget constraint\\
+    (\ref{eq:taylor}) & Monetary policy \\
+    (\ref{eq:mpshock}) & Monetary policy shock AR(1) process \\
+    (\ref{eq:vary}) & GDP growth behavior \\
+    (\ref{eq:varx}) & Output gap behavior \\
+    (\ref{eq:varpi}) & Inflation behavior \\ \hline
+    \multicolumn{2}{l}{Number of equations: 19} \\    
+  \end{tabular}\end{center}
+\end{table}
+
+\begin{table}\caption{Endogenous Variables and Stochastic Shocks in the State Equation}\label{tb:vars}
+  \begin{center}\begin{tabular}{cl}
+    \multicolumn{2}{c}{\textbf{Endogenous Variables} (components of vector $\xi_t$)} \\ \hline
+    Notation & Description \\ \hline
+    $g_t$ & Government expenditures / GDP ratio \\
+    $g_t^*$ & Short-run target for government expenditures / GDP ratio \\
+    $\tau_t$ & Tax revenue to GDP ratio \\
+    $\tau_t^*$ & Short-run target for tax revenue / GDP ratio \\
+    $n_t$ & Net transfers / GDP ratio \\
+    $n_t^*$ & Short-run target for net transfers / GDP ratio \\
+    $d_t$ & Primary government budget deficit / GDP ratio \\
+    $d_t^*$ & Short-run target for primary deficit / GDP ratio \\
+    $b_t$ & Government debt to GDP ratio \\
+    $u_{g,t}$ & Government expenditures AR(1) policy shock \\
+    $u_{\tau,t}$ & Tax revenue AR(1) policy shock \\
+    $u_{n,t}$ & Net transfers AR(1) policy shock \\
+    $u_{d,t}$ & Budget deficit AR(1) policy shock \\
+    $u_{b,t}$ & Government budget AR(1) residual \\
+    $u_{r,t}$ & Monetary policy AR(1) shock \\ 
+    $y_t$ & Nominal GDP growth \\
+    $x_t$ & Output gap \\
+    $\pi_t$ & Inflation rate \\
+    $r_t$ & Nominal interest rate \\ \hline
+    \multicolumn{2}{l}{Number of endogenous variables: 19} \\
+    \ \\
+    \multicolumn{2}{c}{\textbf{Stochastic Shocks} (components of vector $e_t$)} \\ \hline
+    $e_{g,t}$ & Government expenditures policy shock \\
+    $e_{\tau,t}$ & Tax policy shock \\
+    $e_{n,t}$ & Net transfers policy shock \\ 
+    $e_{d,t}$ & Budget deficit policy shock \\
+    $e_{b,t}$ & Government budget residual shock \\
+    $e_{r,t}$ & Monetary policy shock \\
+    $e_{y,t}$ & Nominal GDP growth shock \\
+    $e_{x,t}$ & Output gap shock \\
+    $e_{\pi,t}$ & Inflation shock \\ \hline
+    \multicolumn{2}{l}{Number of stochastic shocks: 9} \\    
+  \end{tabular}\end{center}
+\end{table}
+
+Let $w_t = [g_t^{OBS}~ \tau_t^{OBS}~ n_t^{OBS}~ d_t^{OBS}~ b_t^{OBS}~ y_t^{OBS}~ x_t^{OBS}~ \pi_t^{OBS}~ r_t^{OBS}]'$ denote the $9 \times 1$ vector of observable variables associated with the data description in the previous subsection.  The observation equation is given by,
+\beq \label{eq:obs} w_t = A \xi_t \eeq
+where $A$ is a matrix that picks off of $\xi_t$ variables that are observed, and converts rates to an annual percentage where appropriate. 
+
+The likelihood function can be constructed using the procedure described in \citee{kim1994} and \citee{kimnelson}.  The procedure combines the Kalman filter and Hamilton filter to construct likelihood function, conditional on the model parameters, including the switching probabilities, and a given distribution of the stochastic shocks.
+
+\subsection{Bayesian Estimation}
+
+I estimate the model using a Bayesian Monte Carlo Markov chain simulation method.  The parameters to be estimated are simulated from the posterior using a random walk Metropolis Hastings procedure with a check for sign conditions on the impulse response functions.  The parameters to be estimated and the prior distributions are summarized in Tables \ref{tb:sprior}, \ref{tb:fprior}, \ref{tb:mpprior}, and \ref{tb:yxpiprior}.
+
+Table \ref{tb:fprior} describes the prior distributions for the regime-constant parameters in the fiscal policy functions.  These include fiscal policy persistence, fiscal policy responses to output and 
+
+
+
+
+\begin{table}\caption{Prior Distributions for Regime Switching Parameters}\label{tb:sprior}
+  \hspace*{-0.5in}\begin{small}
+    \begin{tabular}{clcccl}
+      \multicolumn{6}{c}{Debt Level Regime Switching} \\
+      Parm. & Distribution & Mean & Std.Dev. & Range & Description\\ \hline
+      $p_L$ & \textit{Beta}($\alpha=3$, $\beta=3$) & ~0.5 & 0.19 & $[0,1]$ & Regime switch prob (remain reg L) \\ [0.3pc]
+      $p_H$ & \textit{Beta}($\alpha=3$, $\beta=3$) & ~0.5 & 0.19 & $[0,1]$ & Regime switch prob (remain reg H) \\ [0.3pc]
+      $\bar{b}^m$ & \textit{Gamma}($\alpha=5$, $\beta=6$) & ~0.83 & 0.37 & $[0,\infty)$ & Debt / GDP long-run target (Reg m=L,H) \\ [0.3pc] \hline
+      \ \\ [0.7pc]
+        
+      \multicolumn{6}{c}{Fiscal Financing Regime Switching} \\
+      Parm. & Distribution & Mean & Std.Dev. & Range & Description\\ \hline
+      $p_A$ & \textit{Beta}($\alpha=3$, $\beta=3$) & ~0.5 & 0.19 & $[0,1]$ & Regime switch prob (remain reg A) \\ [0.3pc]
+      $p_B$ & \textit{Beta}($\alpha=3$, $\beta=3$) & ~0.5 & 0.19 & $[0,1]$ & Regime switch prob (remain reg B)\\ [0.3pc]
+      $\bar{g}^m$ & \textit{Beta}($\alpha=2$, $\beta=3$) & ~0.4 & 0.20 & $[0,1]$ & Gov. exp. long-run target (Reg m=A,B)   \\ [0.3pc]
+      $\psi_g^m$ & (Neg) \textit{Beta}($\alpha=2$, $\beta=2$) & -0.5 & 0.22 & $[-1,0]$ & Gov. exp. resp. to output gap (Reg m=A,B) \\ [0.3pc]
+      $\gamma_g^m$ & (Neg) \textit{Beta}($\alpha=2$, $\beta=2$) & -0.5 & 0.22 & $[-1,0]$ & Gov. exp. feedback on gov. debt (Reg m=A,B) \\ [0.3pc]
+      $\bar{\tau}^m$ & \textit{Beta}($\alpha=2$, $\beta=3$) & ~0.4 & 0.20 & $[0,1]$ & Tax long-run target (Regimes m=A,B)   \\ [0.3pc]
+      $\psi_\tau^m$ & \textit{Beta}($\alpha=2$, $\beta=2$) & 0.5 & 0.22 & $[0,1]$ & Tax feedback on output gap (Reg m=A,B) \\ [0.3pc]
+      $\gamma_\tau^m$ & \textit{Beta}($\alpha=2$, $\beta=2$) & 0.5 & 0.22 & $[0,1]$ & Tax feedback on gov. debt (Reg m=A,B) \\ [0.3pc]
+      $\bar{n}^m$ & \textit{Beta}($\alpha=2$, $\beta=3$) & ~0.4 & 0.20 & $[0,1]$ & Transfers long-run target (Regimes m=A,B)   \\ [0.3pc]
+      $\psi_n^m$ & (Neg) \textit{Beta}($\alpha=2$, $\beta=2$) & -0.5 & 0.22 & $[-1,0]$ & Transfers feedback on output gap (Reg m=A,B)  \\ [0.3pc]
+      $\gamma_n^m$ & (Neg) \textit{Beta}($\alpha=2$, $\beta=2$) & -0.5 & 0.22 & $[-1,0]$ & Transfers feedback on gov. debt (Reg m=A,B)  \\ [0.3pc]
+      $\psi_d^m$ & (Neg) \textit{Beta}($\alpha=2$, $\beta=2$) & -0.5 & 0.22 & $[-1,0]$ & Deficits feedback on output gap (Reg m=A,B) \\ [0.3pc]
+      $\gamma_d^m$ & (Neg) \textit{Beta}($\alpha=2$, $\beta=2$) & -0.5 & 0.22 & $[-1,0]$ & Deficits feedback on gov. debt (Reg m=A,B) \\ [0.3pc] \hline
+      \ \\ [0.7pc]
+      
+      \multicolumn{6}{c}{Fiscal Volatility Regime Switching} \\
+      Parm. & Distribution & Mean & Std.Dev. & Range & Description\\ \hline
+      $p_S$ & \textit{Beta}($\alpha=3$, $\beta=3$) & ~0.5 & 0.19 & $[0,1]$ & Regime switch prob (remain reg S) \\ [0.3pc]
+      $p_V$ & \textit{Beta}($\alpha=3$, $\beta=3$) & ~0.5 & 0.19 & $[0,1]$ & Regime switch prob (remain reg V) \\ [0.3pc]
+      $\sigma_g^m$ & \textit{InvGamma}($\alpha=2.5$, $\beta=0.25$) & ~0.17 & 0.24 & $[0,\infty)$ & Std. dev. gov/ exp. shock (Reg m=S,V) \\ [0.3pc]
+      $\sigma_\tau^m$ & \textit{InvGamma}($\alpha=2.5$, $\beta=0.25$) & ~0.17 & 0.24 & $[0,\infty)$ & Std. dev. tax shock (Reg m=S,V) \\ [0.3pc]
+      $\sigma_n^m$ & \textit{InvGamma}($\alpha=2.5$, $\beta=0.25$) & ~0.17 & 0.24 & $[0,\infty)$ & Std. dev. transfers shock (Reg m=S,V) \\ [0.3pc]
+      $\sigma_d^m$ & \textit{InvGamma}($\alpha=2.5$, $\beta=0.25$) & ~0.17 & 0.24 & $[0,\infty)$ & Std. dev. deficit shock (Reg m=S,V) \\ [0.3pc] \hline
+
+  \end{tabular}
+  \end{small}
+\end{table}
+
+
+\begin{table}\caption{Prior Distributions for Fixed Fiscal Policy Parameters}\label{tb:fprior}
+  \begin{center}\begin{small}
+  \begin{tabular}{clcccl}
+    Parm. & Distribution & Mean & Std.Dev. & Range & Description\\ \hline
+    $\rho_g$ & \textit{Beta}($\alpha=3$, $\beta=3$) & ~0.5 & 0.19 & $[0,1]$ & Gov. exp. persistence \\ [0.3pc]
+    $\alpha_g$ & \textit{Beta}($\alpha=3$, $\beta=3$) & ~0.5 & 0.19 & $[0,1]$ & Gov. exp. shock AR(1) coef. \\ [0.3pc]
+    $\rho_\tau$ & \textit{Beta}($\alpha=3$, $\beta=3$) & ~0.5 & 0.19 & $[0,1]$ & Tax persistence \\ [0.3pc]
+    $\alpha_\tau$ & \textit{Beta}($\alpha=3$, $\beta=3$) & ~0.5 & 0.19 & $[0,1]$ & Tax shock AR(1) coef. \\ [0.3pc]
+    $\rho_n$ & \textit{Beta}($\alpha=3$, $\beta=3$) & ~0.5 & 0.19 & $[0,1]$ & Transfers persistence \\ [0.3pc]
+    $\alpha_n$ & \textit{Beta}($\alpha=3$, $\beta=3$) & ~0.5 & 0.19 & $[0,1]$ & Transfers shock AR(1) coef. \\ [0.3pc]
+
+    $\rho_d$ & \textit{Beta}($\alpha=3$, $\beta=3$) & ~0.5 & 0.19 & $[0,1]$ & Deficits persistence \\ [0.3pc]
+    $\alpha_d$ & \textit{Beta}($\alpha=3$, $\beta=3$) & ~0.5 & 0.19 & $[0,1]$ & Deficits shock AR(1) coef. \\ [0.3pc]
+    $\bar{u}_b$ & \textit{Normal}($\mu=0.0$, $\sigma=0.1$) & ~0.00 & 0.10 & $(-\infty,\infty)$ & Long-run budget residual \\ [0.3pc]
+    $\alpha_u$ & \textit{Beta}($\alpha=3$, $\beta=3$) & ~0.5 & 0.19 & $[0,1]$ & Budget residual AR(1) coef. \\ [0.3pc]
+    $\sigma_u$ & \textit{InvGamma}($\alpha=2.5$, $\beta=0.25$) & ~0.17 & 0.24 & $[0,\infty)$ & Std. dev. budget residual shock \\ [0.3pc] \hline
+                          
+    
+    
+    % R code to visualize distributions
+    % Beta distribution
+    % pb <- function(a,b) plot(x=1:1000/1000, y=dbeta(1:1000/1000,a,b))
+    % sb <- function(a,b) sqrt(a*b/((a+b)*(a+b)*(a+b+1)))
+    % mub <- function(a,b) a/(a+b)
+                            
+    % Inverse gamma dist
+    % pig <- function(a,b) plot(x=1:1000/1000, y=dinvgamma(1:1000/1000,a,b))
+    % sig <- function(a,b) sqrt(b*b/((a-1)*(a-1)*(a-2)))
+    % muig <- function(a,b) b/(a-1)
+
+                            % mug <- function(a,b) a/b
+                            % sg <- function(a,b) a/(b*b)
+                            % pg <- function(a,b) plot(x=1:2000/1000, y=dgamma(1:2000/1000,a,b))
+                            % allg <-function(a,b) {write(sprintf("mean=%f", mug(a,b)),stdout()); write(sprintf("stdev=%f", sg(a,b)),stdout()); pg(a,b) }
+
+  \multicolumn{6}{p{6.8in}}{The prior distribution for the correlation matrix describing the relationship between the four fiscal policy shocks (i.e. the $4 \times 4$ matrix of correlations, $\varrho_{i,j}$, for $i,j \in \{g,\tau,n,d\}$) is given by an inverse Wishart distribution with degrees of freedom equal to 5 (one plus the dimension of the covariance matrix) and scale matrix equal to $I_4$, which \citee{barnard} show results in a positive definite correlation matrix.}
+  \end{tabular}
+  \end{small}\end{center}
+\end{table}
+
+
+\begin{table}\caption{Prior Distributions for Monetary Policy Parameters}\label{tb:mpprior}
+  \begin{center}\begin{small}
+  \begin{tabular}{clcccl}
+    Parm & Distribution & Mean & StdDev & Range & Description\\ \hline
+    $\bar{r}$ & \textit{Normal}($\mu=0.0125$, $\sigma=0.005$) & ~0.0125 & 0.005 & $(-\infty,\infty)$ & Long-run target quarterly int rate\\ [0.3pc]
+    $\rho_r$ & \textit{Beta}($\alpha=3$, $\beta=3$) & ~0.5 & 0.19 & $[0,1]$ & Monetary policy persistence \\ [0.3pc]
+    $\phi_x$  & \textit{Normal}($\mu=0.5$, $\sigma=0.25$) & ~0.50 & 0.25 & $(-\infty,\infty)$ & Int rate response to output gap\\ [0.3pc]
+    $\phi_\pi$  & \textit{Normal}($\mu=1.5$, $\sigma=0.25$) & ~1.50 & 0.25 & $(-\infty,\infty)$ & Int rate response to inflation\\ [0.3pc]
+    $\alpha_r$ & \textit{Beta}($\alpha=3$, $\beta=3$) & ~0.5 & 0.19 & $[0,1]$ & Monetary policy shock AR(1) coef \\ [0.3pc]
+    $\sigma_r$ & \textit{InvGamma}($\alpha=2.5$, $\beta=0.25$) & ~0.17 & 0.24 & $[0,\infty)$ & Std. dev. monetary policy shock \\ [0.3pc] \hline
+
+
+  \end{tabular}
+  \end{small}\end{center}
+\end{table}
+
+
+
+\hspace*{-0.5in}\begin{table}\caption{Prior Distributions Governing Output and Inflation Dynamics}\label{tb:yxpiprior}
+  \begin{small}
+  \hspace*{-0.5in}\begin{tabular}{clcccl}
+    Parm & Distribution & Mean & StdDev & Range & Description\\ \hline
+    $\bar{y}_1$ & \textit{Normal}($\mu=0.02$, $\sigma=0.01$) & ~0.02 & 0.01 & $(-\infty,\infty)$ & Long-run average NGDP qtr. growth\\ [0.3pc]
+    $\bar{\pi}_1$ & \textit{Normal}($\mu=0.01$, $\sigma=0.005$) & ~0.01 & 0.005 & $(-\infty,\infty)$ & Long-run average qtr. inflation\\ [0.3pc]
+
+    $\eta_{y,g}$ & \textit{Log-normal}($\mu=-1.0$, $\sigma=1.0$) & ~0.61 & 0.80 & $(0,\infty)$ & Conc. impact of gov. on NGDP growth \\ [0.3pc]
+    $\eta_{y,\tau}$ & (Neg) \textit{Log-normal}($\mu=-1.0$, $\sigma=1.0$) & -0.61 & 0.80 & $(-\infty,0)$ & Conc. impact of taxes on NGDP growth \\ [0.3pc]
+    $\eta_{y,n}$ & \textit{Log-normal}($\mu=-1.0$, $\sigma=1.0$) & ~0.61 & 0.80 & $(0,\infty)$ & Conc. impact of transfers on NGDP growth \\ [0.3pc]
+    $\eta_{y,d}$ & \textit{Log-normal}($\mu=-1.0$, $\sigma=1.0$) & ~0.61 & 0.80 & $(0,\infty)$ & Conc. impact of deficits on NGDP growth \\ [0.3pc]
+    $\lambda_{y}$ & (Neg) \textit{Log-normal}($\mu=-1.0$, $\sigma=1.0$) & ~0.61 & 0.80 & $(-\infty,0)$ & Conc. impact of int. rate on NGDP growth \\ [0.3pc]
+
+    $\eta_{x,g}$ & \textit{Log-normal}($\mu=-1.0$, $\sigma=1.0$) & ~0.61 & 0.80 & $(0,\infty)$ & Conc. impact of gov. on output gap \\ [0.3pc]
+    $\eta_{x,\tau}$ & (Neg) \textit{Log-normal}($\mu=-1.0$, $\sigma=1.0$) & -0.61 & 0.80 & $(-\infty,0)$ & Conc. impact of taxes on output gap \\ [0.3pc]
+    $\eta_{x,n}$ & \textit{Log-normal}($\mu=-1.0$, $\sigma=1.0$) & ~0.61 & 0.80 & $(0,\infty)$ & Conc. impact of transfers on output gap \\ [0.3pc]
+    $\eta_{x,d}$ & \textit{Log-normal}($\mu=-1.0$, $\sigma=1.0$) & ~0.61 & 0.80 & $(0,\infty)$ & Conc. impact of deficits on output gap \\ [0.3pc]
+    $\lambda_{x}$ & (Neg) \textit{Log-normal}($\mu=-1.0$, $\sigma=1.0$) & ~0.61 & 0.80 & $(-\infty,0)$ & Conc. impact of int. rate on output gap \\ [0.3pc]
+
+    $\eta_{\pi,g}$ & \textit{Log-normal}($\mu=-1.0$, $\sigma=1.0$) & ~0.61 & 0.80 & $(0,\infty)$ & Conc. impact of gov. on inflation \\ [0.3pc]
+    $\eta_{\pi,\tau}$ & (Neg) \textit{Log-normal}($\mu=-1.0$, $\sigma=1.0$) & -0.61 & 0.80 & $(-\infty,0)$ & Conc. impact of taxes on inflation \\ [0.3pc]
+    $\eta_{\pi,n}$ & \textit{Log-normal}($\mu=-1.0$, $\sigma=1.0$) & ~0.61 & 0.80 & $(0,\infty)$ & Conc. impact of transfers on inflation \\ [0.3pc]
+    $\eta_{\pi,d}$ & \textit{Log-normal}($\mu=-1.0$, $\sigma=1.0$) & ~0.61 & 0.80 & $(0,\infty)$ & Conc. impact of deficits on inflation \\ [0.3pc]
+    $\lambda_{\pi}$ & (Neg) \textit{Log-normal}($\mu=-1.0$, $\sigma=1.0$) & ~0.61 & 0.80 & $(-\infty,0)$ & Conc. impact of int. rate on inflation \\ [0.3pc]
+
+    $\theta_{i,i}$ & \textit{Normal}($\mu=1.0$, $\sigma=0.5$) & ~1.0 & 0.5 & $(-\infty,\infty)$ & Dependence on own lag for $i\in\{y,x,\pi\}$ \\ [0.3pc]
+    $\theta_{i,j}$ & \textit{Normal}($\mu=0.0$, $\sigma=1.0$) & ~0.0 & 1.0 & $(-\infty,\infty)$ & Dep. of $i$ on lag $j$ for $\{i\neq j\}\in\{y,x,\pi\}$ \\ [0.3pc]
+
+    $\sigma_y$ & \textit{InvGamma}($\alpha=2.5$, $\beta=0.25$) & ~0.17 & 0.24 & $[0,\infty)$ & Std. dev. NGDP growth shock \\ [0.3pc] 
+    $\sigma_x$ & \textit{InvGamma}($\alpha=2.5$, $\beta=0.25$) & ~0.17 & 0.24 & $[0,\infty)$ & Std. dev. output gap shock \\ [0.3pc] 
+    $\sigma_\pi$ & \textit{InvGamma}($\alpha=2.5$, $\beta=0.25$) & ~0.17 & 0.24 & $[0,\infty)$ & Std. dev. inflation shock \\ [0.3pc] \hline
+
+    \multicolumn{6}{p{6.8in}}{The prior joint distribution for the covariances $\sigma_{i,j}$, $i,j \in \{y,x,\pi\}$ are determined from the variances, $\sigma_i^2$, and an inverse Wishart prior distribution on the correlations, with degrees of freedom equal to 4 (one plus the dimension of the covariance matrix) and scale matrix equal to $I_3$, which \citee{barnard} show results in a positive definite correlation matrix.}
+  \end{tabular}
+  \end{small}
+\end{table}
+
+    
+\newpage
+\nocite{*}
+\bibliographystyle{apalike}
+\bibliography{fiscalswitch}
+
+\end{document}

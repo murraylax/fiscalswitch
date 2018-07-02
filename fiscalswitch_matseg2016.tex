@@ -1,0 +1,400 @@
+\documentclass{beamer}
+\usepackage{beamerthemeshadow}
+\usepackage{verbatim}
+
+\usepackage{lastpage}
+\usepackage{xcolor}
+\usepackage{pgf}
+\usepackage{colortbl}
+\usepackage{hyperref}
+\usepackage{multirow}
+
+\usepackage{siunitx}
+\sisetup{input-symbols=(), group-digits  = false} 
+
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\be}{\begin{enumerate}}
+\newcommand{\ee}{\end{enumerate}}
+\newcommand{\bd}{\begin{description}}
+\newcommand{\ed}{\end{description}}
+\newcommand{\prbf}[1]{\textbf{#1}}
+\newcommand{\prit}[1]{\textit{#1}}
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\bdm}{\begin{displaymath}}
+\newcommand{\edm}{\end{displaymath}}
+
+\newcommand{\ft}[1]{
+  \frametitle{\begin{tabular}{p{4.2in}r} \textcolor{white}{#1} & \small{\insertframenumber / \inserttotalframenumber} \end{tabular}}
+  \setbeamercovered{transparent=18}
+}
+
+\newcommand{\eft}[1]{
+  \frametitle{\begin{tabular}{p{4in}r} \textcolor{white}{#1} & \small{\hyperlink{f:questions}{\beamergotobutton{GO BACK}}} \end{tabular}}
+  \setbeamercovered{transparent=18}
+}
+
+\newcommand{\stepinv}{\setbeamercovered{invisible}}
+\newcommand{\stopinv}{\setbeamercovered{transparent=18}}
+\newcommand{\uncoverinv}[1]
+{
+  \setbeamercovered{invisible}
+  \uncover<+->{#1}
+  \setbeamercovered{transparent=18}
+}
+\newcommand{\ans}[1]{\textcolor{blue}{#1}}
+\newcommand{\ansinv}[1]
+{
+  \setbeamercovered{invisible}
+  \uncover<+->{\textcolor{blue}{#1}}
+  \setbeamercovered{transparent=18}
+}
+\newcommand{\setinv}{\setbeamercovered{invisible}}
+\newcommand{\setvis}{\setbeamercovered{transparent=18}}
+\newcommand{\centerpic}[2]
+{
+  \begin{center}
+  \includegraphics[#1]{#2}
+  \end{center}
+}
+\newcommand{\h}[1]{\hat{#1}}
+\newcommand{\ds}{\displaystyle}
+
+\definecolor{light}{rgb}{1.0,0.7,0.7}
+\definecolor{BrickRed}{rgb}{0.8,0.1,0.1}
+%\definecolor{light}{rgb}{1.0,0.5,0.5}
+\newcommand{\hl}[1]{\only<#1>{\cellcolor{light}}}
+
+\definecolor{mycolor}{rgb}{0.6,0.0,0.0}
+\usecolortheme[named=mycolor]{structure}
+
+\title{Regime Switching in Fiscal Policy Composition}
+\author[James Murray, University of Wisconsin - La Crosse]
+{
+James Murray\\
+Department of Economics\\
+University of Wisconsin - La Crosse
+}
+\date{August 6, 2016}
+
+\begin{document}
+
+\frame{\titlepage \setcounter{framenumber}{0}}
+
+\begin{frame}
+  \ft{Purpose}
+  \uncover<+-> {
+  \begin{block}{Describe fiscal policy dynamics}
+    \begin{itemize}
+    \item Income tax rate
+    \item Net transfer payments
+    \item Government expenditures
+    \item Deficits
+    \end{itemize}
+  \end{block}
+  } % end uncover
+
+  \uncover<+->{
+  \begin{block}{Describe debt service}
+    \begin{enumerate}
+    \item How do these fiscal policy variables respond to \textit{debt / GDP}?
+    \item What is the implied target for \textit{debt / GDP}?
+    \item Is there switching in his behavior?
+    \end{enumerate}
+  \end{block}
+  } % end uncover
+
+  \uncover<+->{
+  \begin{block}{Describe stabilizing behavior}
+    \begin{enumerate}
+    \item How do fiscal policy variables respond to \textit{output gap}?
+    \item Is there switching in this behavior?
+    \end{enumerate}
+  \end{block}
+  } % end uncover
+\end{frame}
+
+\begin{frame}
+  \ft{Fiscal dynamics matter}
+  \uncover<+-> {
+  \begin{block}{Debt target and tax response matter}
+    Given \textit{smaller debt/GDP target} and/or \textit{larger response of tax rate},
+    \begin{itemize}
+    \item People expect higher income taxes $\rightarrow$ decreases consumption, investment, real GDP.
+    \item Similar to Richter and Throckmorton (EER, 2015)
+    \end{itemize}
+  \end{block}
+  } % end uncover
+
+  \uncover<+-> {
+  \begin{block}{Fiscal composition matters}
+    Leeper, Plante, and Traum (JoE, 2010)
+    \begin{itemize}
+    \item Rich set of fiscal variables responding to debt fits data best
+    \item Magnitude of fiscal shocks depend on composition
+    \item Fiscal multipliers can have unexpected signs, depending on composition
+    \end{itemize}
+  \end{block}
+  } % end uncover
+
+  \uncover<+-> {
+  \begin{block}{Debt target and interactions matter}
+    \begin{itemize}
+    \item Fiscal responses will depend on \textit{debt target}
+    \end{itemize}
+  \end{block}
+  } % end uncover
+
+\end{frame}
+
+\begin{frame}
+  \ft{Related fiscal policy literature}
+  \begin{itemize}
+  \item<+-> Favero and Montecelli (2005): Deficit feedback rule with \textit{Markov~switching}
+    \uncover<.->{
+      \begin{itemize}
+      \item Switching explains data better
+      \item Deficits switch between \textit{active} and \textit{passive} regimes
+      \end{itemize}
+    }
+  \item<+-> Chung, Davig, Leeper (2007): Switching in monetary \& fiscal policy
+    \uncover<.->{
+      \begin{itemize}
+      \item \textit{Switching} in fiscal policy can adversely affect stabilizing impact of monetary policy
+      \end{itemize}
+    }
+
+  \item<+-> Ko and Morita (2013): Switching in government expenditures and taxes in Japan    
+  \item<+-> Bohn (1998, 2005): Deficit responds (as it should) to debt/GDP.
+  \item<+-> Jones (JME, 2001): Fiscal stabilizers do little to reduce volatility, recession duration
+
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \ft{Fiscal behavioral relationships}
+  \begin{block}{Evolution of fiscal variables}
+    \bdm f_t = \rho_f(s_t) f_{t-1} + \left[1-\rho_f(s_t)\right] f^*_t, \edm
+    \bdm f^*_t = \bar{f}(s_t) + \psi_f(s_t) x_t + \gamma_f(s_t) \left[ b_{t-1} - \bar{b}(s_t) \right] + u_{f,t},\edm
+    \begin{center}$s_t \in \{1,2,..M\}$ is fiscal \textit{regime}... more later...\end{center}
+  \end{block}
+
+  \begin{block}{Fiscal variables}
+    \bdm f_t \in \{\tau_t, n_t, g_t \} \edm
+    (1) \textit{Tax rate},$~$ (2) \textit{Net transfers / GDP},$~$ (3) \textit{Gov exp / GDP}
+  \end{block}
+  
+  \begin{block}{Notation}
+    \begin{scriptsize}
+    \begin{tabular}{llcll}
+      $f_t$ & Fiscal variable &  & $x_t$ & Output gap \\ 
+      $f_t^*$ & Time $t$ target for $f_t$ & & $\rho_f(s_t)$ & Persistence of $f_t$ \\
+      $\bar{f}(s_t)$ & \textit{Long-run} target for $f_t$ & & $\psi_f(s_t)$ & Feedback on output gap \\
+      $b_t$ & Debt / GDP ratio & & $\gamma_f(s_t)$ & Feedback on debt/GDP \\
+      $\bar{b}(s_t)$ & \textit{Long-run} target for debt/GDP & & $u_{f,t}$ & Innovations to $f_t$ \\
+    \end{tabular}
+    \end{scriptsize}
+  \end{block}
+  
+\end{frame}
+
+\begin{frame}
+  \ft{Stochastic terms}
+  \begin{block}{Evolution of stochastic shocks}
+    \bdm u_{f,t} = \phi_{f,\tau}(s_t) e_{\tau,t} + \phi_{f,n}(s_t) e_{n,t} + \phi_{f,g}(s_t) e_{g,t} \edm
+    \bdm e_{f,t} = \alpha_f(s_t) e_{f,t-1} + \sigma_f(s_t) v_{f,t}, ~~ v_{f,t} \sim N(0,1) \edm
+  \end{block}
+
+  \begin{block}{Notation}
+    \begin{itemize}
+    \item $\phi_{f,f'}(s_t)$: captures co-dependence of fiscal policy shocks
+    \item $\phi_{f,f}(s_t) \equiv 1$
+    \item $v_{f,t}$: iid shock to fiscal variable $f_t$
+    \item $\sigma_f(s_t)$: standard deviation of iid shock to fiscal variable $f_t$
+    \end{itemize}
+  \end{block}
+    
+\end{frame}
+
+\begin{frame}
+  \ft{Deficits and Debt}
+  \uncover<+->{\begin{block}{Evolution of primary deficit}
+    \bdm d_t = \rho_d(s_t) d_{t-1} + \left[1-\rho(s_t)\right] d^*_t \edm
+    \bdm d^*_t = \bar{d}(s_t) + \psi_d(s_t) x_t + \gamma_f \left[b_{t-1} - \bar{b}(s_t)\right] + u_{d,t} \edm
+    \bdm u_{d,t} = \phi_{d,\tau}(s_t) e_{\tau,t} + \phi_{d,n}(s_t) e_{d,t} + \phi_{d,g}(s_t) e_{g,t} + e_{d,t} \edm
+    \bdm e_{d,t} = \alpha_d(s_t) e_{d,t-1} + \sigma_d(s_t) v_{d,t}, ~~ v_{d,t} \sim N(0,1) \edm
+  \end{block}}
+
+  \uncover<+->{\begin{block}{Evolution of debt}
+    \vspace*{-0.5pc}\begin{displaymath} 
+      \begin{array}{ll} \mbox{Nominal terms:}~~ & B_t = (1+r_t) B_{t-1} + D_t - (M_t - M_{t-1}) \\
+        \mbox{As \% of GDP:} & b_t = \frac{1+r_t}{1+y_t} b_{t-1} + d_t - m_t 
+      \end{array}
+    \end{displaymath}
+    \vspace*{-1pc}\begin{itemize}
+      \item $y_t$: \textit{Quarterly} nominal GDP growth 
+      \item $r_t$: Government borrowing rate
+      \item $m_t \equiv (M_t - M_{t-1})/Y_t$: Seigniorage / GDP 
+    \end{itemize}
+  \end{block}}
+\end{frame}
+
+\begin{frame}
+  \ft{Fiscal Targets}
+  \uncover<+->{\begin{block}{Four long-run fiscal targets to estimate:}
+  \bi
+  \item $\bar{\tau}(s_t)$: Income tax rate
+  \item $\bar{n}(s_t)$: Net transfers / GDP 
+  \item $\bar{g}(s_t)$: Government expenditures / GDP
+  \item $\bar{b}(s_t)$: Debt / GDP 
+  \ei
+  \end{block}}
+
+  \uncover<+->{\begin{block}{Implied long-run deficit target}
+  For a given regime, set $b_t = b_{t-1} = \bar{b}(s_t)$, then
+    \bdm \bar{d}(s_t) = \frac{\bar{y} - \bar{r}}{1+\bar{y}} \bar{b}(s_t) + \bar{m}, \edm
+    Calibrate $\bar{y}=0.0158$, avg \textit{quarterly} growth rate in nominal GDP;\newline
+    $\bar{m}=0.0090$, avg seigniorage (\textit{quarterly $\Delta$}) / GDP ratio;\newline
+    $\bar{r}=0.01857$, avg of \textit{quarterly} interest payments / debt.\newline
+  \end{block}}
+\end{frame}
+
+\begin{frame}
+  \ft{Regime switching}
+  \uncover<+->{\begin{block}{Description}
+  \begin{itemize}
+  \item Two fiscal policy regimes, $s_t \in \{1,2\}$
+  \item All parameters may take on two values, one for each regime
+  \item Each fiscal policy variable can change its,
+    \begin{itemize}
+    \item long-run magnitude 
+    \item use for stabilization (response to $x_t$)
+    \item use for balancing long-run government budget (response to $b_t$)
+    \item volatility
+    \end{itemize}
+  \end{itemize}
+  \end{block}}
+
+  \uncover<+->{\begin{block}{Exogenous Markov switching}
+    \begin{displaymath} P(s_t=j | s_{t-1}=i) = p_{i,j},~~ p_{i,j} \in (0,1)~~ \sum_{j=1}^{M} p_{i,j} = 1 \end{displaymath}
+  \end{block}}
+\end{frame}
+
+\begin{frame}
+  \ft{Data}
+  \begin{block}{Federal personal income tax rate ($\tau_t$)}
+    \begin{displaymath} \tau_t = \frac{IT_t}{W_t + PRI_t + RI_t + CP_t + II_t} \end{displaymath}
+    \vspace*{-1pc}\begin{itemize}
+    \item $IT$ is federal personal income tax (NIPA 3.2 Line 3),
+    \item $W$ is wages \& salaries (NIPA 1.12 Line 3),
+    \item $PRI$ is proprietor's income (NIPA 1.12 Line 9),
+    \item $RI_t$ is rental income (NIPA 1.12 Line 12),
+    \item $CP_t$ is corporate income (NIPA 1.12, Line 13),
+    \item $II_t$ is interest income (NIPA 1.12 Line 12). 
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \ft{Data}
+  \uncover<+->{\begin{block}{Federal net current transfers / GDP ($n_t$)}
+    \begin{displaymath} n_t = \frac{TRP_t - TRR_t}{GDP_t} \end{displaymath}
+    \vspace*{-1pc}\begin{itemize}
+    \item $TRP_t$ is federal current transfer payments (NIPA 3.2 Line 25)
+    \item $TRR_t$ is federal current transfer receipts (NIPA 3.2 Line 18)
+    \item $GDP_t$ is nominal GDP (NIPA 1.1.5 Line 1)
+    \end{itemize}
+  \end{block}}
+
+  \uncover<+->{\begin{block}{Government expenditures / Nominal GDP ($g_t$)}
+    \begin{displaymath} g_t = \frac{GC_t + GI_t}{GDP_t} \end{displaymath}
+    \vspace*{-1pc}\begin{itemize}
+    \item $GC_t$ is federal government consumption expenditures (NIPA 3.2 Line 24)
+    \item $GI_t$ is federal government gross investment expenditures (NIPA 3.2 Line 44)
+    \end{itemize}
+  \end{block}}
+\end{frame}
+
+\begin{frame}
+  \ft{Data}
+  \uncover<+->{\begin{block}{Primary deficit / GDP ($d_t$)}
+    \begin{displaymath} d_t = (-SG_t - IP_t) / GDP_t \end{displaymath}
+    \begin{itemize}
+    \item $SG_t$ is net federal government saving (NIPA 3.2 Line 36)
+    \item $IP_t$ is federal interest payments (NIPA 3.2 Line 32)
+    \end{itemize}
+  \end{block}}
+
+  \uncover<+->{\begin{block}{Exogenous budget constraint variables}
+    \begin{itemize}
+    \item Interest payments / GDP, $~r_t = IP_t / Debt_t$,\newline $~~$where $Debt_t$ is total federal debt. 
+    \item Seigniorage / GDP, $~m_t = (M_t - M_{t-1}) / GDP_t$,\newline where $M_t$ is M2 nominal money stock.
+    \end{itemize}
+  \end{block}}
+\end{frame}
+
+\begin{frame}
+  \ft{Output gap}
+  \begin{block}{Endogeneity problem:}
+    \bi
+    \item Automatic and (quick acting?) discretionary policy causes output to affect fiscal variables (the effect I am after)
+    \item Endogenous feedback: Fiscal policy can have immediate effect on real GDP
+    \ei
+  \end{block}
+
+  \begin{block}{Instrument for output gap}
+    \bi
+    \item Run ARDL(4) on own lags, four lags of all variables
+    \item Predicted values used as proxy for \textit{exogenously explained} output gap
+    \item Similar to Favero and Montecelli (2005)
+    \ei
+  \end{block}  
+\end{frame}
+
+\begin{frame}
+  \ft{State / Space Representation}
+  \uncover<+->{\begin{block}{State equation}
+    \begin{displaymath} \xi_t = F (s_t) \xi_{t-1} + G (s_t) z_t + M (s_t) v_t \end{displaymath}
+    \vspace*{-1pc}\begin{itemize}
+       \item Endogenous variables: $\xi_t = \left[ \tau_t~ n_t~ g_t~ d_t~ b_t~ e_{\tau,t}~ e_{n,t}~ e_{g,t}~ e_{d,t} \right]'$
+       \item Exogenous variables: $z_t = \left[1~ x_t~ y_t~ m_t \right]$
+       \item Shocks: $v_t = \left[v_{\tau,t}~ v_{n,t}~ v_{g,t}~ v_{d,t} \right]$
+    \end{itemize}
+  \end{block}}
+
+  \uncover<+->{\begin{block}{Observation equation}
+    \begin{displaymath} w_t = H x_t \end{displaymath}
+    Matrix H picks off observed variables
+  \end{block}}
+
+  \uncover<+->{\begin{block}{Kim and Nelson procedure}
+    \begin{itemize}
+    \item Obtain a set of parameter estimates for each regime
+    \item Estimate timing of each regime
+    \end{itemize}
+  \end{block}}
+\end{frame}
+
+\begin{frame}
+  \ft{My Questions}
+  \begin{itemize}
+  \item<+-> Have there been changes in regime?  How does a single regime compare to multiple regimes in terms of model fit?
+  \item<+-> What is the timing of regime changes?
+  \item<+-> How do regimes compare in terms of long-run debt targets?
+  \item<+-> How do regimes compare in fiscal variables' roles for stabilization?  Related to long-run debt targets?
+  \item<+-> How do regimes compare in fiscal variables' roles for balancing long-run budget?
+  \end{itemize}
+\end{frame}
+  
+\begin{frame}
+  \ft{Future papers}
+  \begin{itemize}
+  \item<+-> Could agents with adaptive expectations learn about regime changes?
+  \item<+-> In the context of a DSGE, describe time-dynamics of IRF of a fiscal shock, given different regimes.
+  \item<+-> In the context of a DSGE, what is the impact of a fiscal shock when knowledge of regime is known, unknown, incorrect?
+  \end{itemize}
+\end{frame}
+
+\end{document}
+
